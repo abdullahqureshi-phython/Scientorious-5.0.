@@ -1,0 +1,25 @@
+#Scientorious 5.0
+import random
+
+playerpos=0
+
+snakes={12:1,32:15,54:23,67:42,81:70,99:63}
+ladders={5:21,14:35,45:59,61:76,85:90,72:97}
+
+def roll_dice():
+    return random.randint(1,6)
+
+while True:
+    playerpos = playerpos + roll_dice()
+    if playerpos in snakes:
+        playerpos= snakes[playerpos]
+        print(f"Oops! You have accidentally stepped on a snake and move down to position {playerpos}")
+    elif playerpos in ladders:
+        playerpos= ladders[playerpos]
+        print(f"Yay! You have climbed up a ladder and move up to position {playerpos}")
+    elif playerpos >= 100:
+        playerpos=100
+        print("Congratulations! You have won the game.")
+        break
+    else:
+        print(f"You have moved to position {playerpos}")
