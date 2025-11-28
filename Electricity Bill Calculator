@@ -1,0 +1,39 @@
+#Scientorious 5.0
+units=int(input("Enter the total number of units consumed."))
+
+
+choice=input("Residential or Commercial")
+if choice == "Commercial":
+    fixed_charge=300
+    tax_rate=0.15
+    slab_rates=[15,20,25]
+elif choice == "Residential":
+    fixed_charge=150
+    tax_rate=0.10
+    slab_rates=[15,20,25]
+else:
+    print("invalid choice")
+
+def bill_calculation(units,fixed_charge,slab_rates, tax_rate ):
+    if units <= 100:
+        amount = units * slab_rates[0]
+        tax = amount * tax_rate
+        total = amount + fixed_charge + tax
+        print(total)
+    elif units <= 200:
+        amount = (100 * slab_rates[0]) + ((units-100)*slab_rates[1])
+        tax = amount * tax_rate
+        total = amount + fixed_charge + tax
+        return total
+    elif units > 200:
+        amount = (100 * slab_rates[0]) + (100 * slab_rates[1]) + ((units-200)*slab_rates[2])
+        tax = amount * tax_rate
+        total = amount + fixed_charge + tax
+        return total
+totalcost = bill_calculation(units,fixed_charge,slab_rates, tax_rate)
+print("===Electricity Bill Summary===")
+print(f"Plan Type: {choice}")
+print(f"Units Consumed: {units}")
+print(f"Fixed Charge: {fixed_charge}")
+print(f"Tax Rate: {tax_rate}")
+print(f"Total Cost: {totalcost}")
