@@ -1,0 +1,23 @@
+#Scientorious 5.0
+words=["apple","orange","pear","melon","mango","grape"]
+
+import random
+word = random.choice(words)
+
+lives=6
+
+display=['-' for i in range(len(word))]
+while lives > 0:
+    guess=input("Guess a letter.")
+    for x in range(len(word)):
+        if guess==word[x]:
+            display[x]=word[x]
+    print(f"Your current state: {display}")
+    lives-=1
+    if '-' not in display:
+        break
+
+if '-' in display:
+    print("You have lost the game.")
+else:
+    print("You have guessed the word!")
